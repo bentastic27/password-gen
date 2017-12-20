@@ -3,28 +3,36 @@ import AppComponent from './AppComponent';
 const generator = require('generate-password');
 
 class AppContainer extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
       password: '',
-      config: {
-        length: 10,
-        numbers: true,
-        symbols: true,
-        uppercase: true,
-        excludeSimilarCharacters: false,
-        exclude: '',
-        strict: false
-      }
-    };
+      length: 10,
+      numbers: true,
+      symbols: true,
+      uppercase: true,
+      excludeSimilarCharacters: false,
+      exclude: '',
+      strict: false
+    }
     this.generatePassword = this.generatePassword.bind(this);
+  }
+
+  componentWillMount() {
     this.generatePassword();
   }
 
   generatePassword = () => {
-    const config = this.state.config;
     this.setState({
-      password: generator.generate(config)
+      password: generator.generate({
+        length: this.state.length,
+        numbers: this.state.numbers,
+        symbols: this.state.symbols,
+        uppercase: this.state.uppercase,
+        excludeSimilarCharacters: this.state.excludeSimilarCharacters,
+        exclude: this.state.exclude,
+        strict: this.state.strict
+      })
     });
   }
 
@@ -32,6 +40,13 @@ class AppContainer extends React.Component {
     return (
       <AppComponent
         password={this.state.password}
+        length={this.state.length}
+        numbers={this.state.numbers}
+        symbols={this.state.symbols}
+        uppercase={this.state.uppercase}
+        excludeSimilarCharacters={this.state.excludeSimilarCharacters}
+        exclude={this.state.exclude}
+        strict={this.state.strict}
         generatePassword={this.generatePassword}
       />
     );
