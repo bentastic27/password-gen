@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormControl} from 'react-bootstrap';
+import {FormControl, Checkbox} from 'react-bootstrap';
 import Layout from './Layout';
 const generator = require('generate-password');
 
@@ -84,51 +84,36 @@ class App extends React.Component {
         />
         Length
         <br />
-        <label>
-          <input
-            type="checkbox"
-            checked={this.state.numbers}
-            onChange={this.changeNumbers}
-          />
+        <Checkbox
+          checked={this.state.numbers}
+          onChange={this.changeNumbers}
+        >
           Numbers
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            checked={this.state.symbols}
-            onChange={this.changeSymbols}
-          />
+        </Checkbox>
+        <Checkbox
+          checked={this.state.symbols}
+          onChange={this.changeSymbols}
+        >
           Symbols
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            checked={this.state.uppercase}
-            onChange={this.changeUppercase}
-          />
+        </Checkbox>
+        <Checkbox
+          checked={this.state.uppercase}
+          onChange={this.changeUppercase}
+        >
           Uppercase
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            checked={this.state.excludeSimilarCharacters}
-            onChange={this.changeExcludeSimilarCharacters}
-          />
-          Exclude Similar Characters
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            checked={this.state.strict}
-            onChange={this.changeStrict}
-          />
+        </Checkbox>
+        <Checkbox
+          checked={this.state.excludeSimilarCharacters}
+          onChange={this.changeExcludeSimilarCharacters}
+        >
+          Exclude Similar
+        </Checkbox>
+        <Checkbox
+          checked={this.state.strict}
+          onChange={this.changeStrict}
+        >
           Strict
-        </label>
-        <br />
+        </Checkbox>
         <FormControl
           type="text"
           value={this.state.exclude}
