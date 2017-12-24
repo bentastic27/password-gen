@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       password: '',
-      length: 10,
+      length: 20,
       numbers: true,
       symbols: true,
       uppercase: true,
@@ -77,13 +77,6 @@ class App extends React.Component {
       <Layout>
         <h1>Password Generator</h1>
         <pre>{this.state.password}</pre>
-        <FormControl
-          type="number"
-          value={this.state.length}
-          onChange={this.changeLength}
-        />
-        Length
-        <br />
         <Checkbox
           checked={this.state.numbers}
           onChange={this.changeNumbers}
@@ -115,12 +108,19 @@ class App extends React.Component {
           Strict
         </Checkbox>
         <FormControl
+          type="number"
+          value={this.state.length}
+          onChange={this.changeLength}
+        />
+        Length
+        <br />
+        <FormControl
           type="text"
           value={this.state.exclude}
           onChange={this.changeExclude}
         />
         Exclude
-        <br />
+        <br /><br />
         <button type="button" className="btn btn-primary" onClick={this.generatePassword}>
           Generate Password
         </button>
